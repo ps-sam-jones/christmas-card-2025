@@ -66,7 +66,10 @@ export default function Home() {
       </nav>
 
       {/* Parallax 3D Model - moves slower */}
-      <motion.div className="fixed inset-0 z-30 pointer-events-none" style={{ y: modelY }}>
+      <motion.div
+        className="fixed inset-0 z-30 pointer-events-none max-w-[80%] lg:max-w-none m-auto"
+        style={{ y: modelY }}
+      >
         <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
           <ambientLight intensity={0.8} />
           <directionalLight position={[5, 5, 5]} intensity={1.2} />
@@ -76,7 +79,7 @@ export default function Home() {
 
       {/* Fixed Logo - fades out */}
       <motion.div
-        className="fixed inset-0 flex items-center justify-center pointer-events-none z-20"
+        className="fixed inset-0 flex items-center justify-center pointer-events-none z-20 w-[200px] lg:w-auto m-auto"
         style={{ opacity: logoOpacity, scale: logoScale }}
       >
         <Logo />
@@ -124,12 +127,12 @@ export default function Home() {
 
             {/* Text overlay fades out */}
             <motion.div
-              className="absolute left-0 h-full w-full z-[100] bg-[#42010B] flex items-center justify-center pointer-events-none"
+              className="absolute left-0 h-full w-full z-[100] bg-[#42010B] flex items-center justify-center pointer-events-none px-12"
               style={{
                 opacity: useTransform(videoScrollProgress, [0.4, 0.6], [1, 0]),
               }}
             >
-              <h2 className="font-cofo text-[72px] text-white text-center">
+              <h2 className="font-cofo text-6xl lg:text-[72px] text-white text-center">
                 {['Tis', 'the', 'season', 'for', 'temptation.'].map((word, index) => {
                   const totalWords = 5;
                   const offset = 0.1;
@@ -140,7 +143,7 @@ export default function Home() {
                   return (
                     <motion.span
                       key={index}
-                      className="inline-block mr-6"
+                      className="inline-block mr-2 lg:mr-6"
                       style={{
                         opacity: useTransform(videoScrollProgress, [start, end], [0.4, 1]),
                       }}
@@ -163,7 +166,7 @@ export default function Home() {
             <div className="max-w-[800px] flex flex-col items-center">
               <span className="text-[#F5B40C] font-bold uppercase">Scents de Sléj</span>
               <motion.h2
-                className="font-cofo text-[72px] text-white text-center leading-[120%] mt-3"
+                className="font-cofo text-4xl lg:text-[72px] text-white text-center leading-[120%] mt-3"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
