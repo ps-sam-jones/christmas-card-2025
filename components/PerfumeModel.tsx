@@ -14,7 +14,7 @@ export function PerfumeModel({ mouse }: PerfumeModelProps) {
   const { scene } = useGLTF('/perfume.glb');
 
   const [spinProgress, setSpinProgress] = useState(0); // 0 → 1
-  const baseRotationY = Math.PI / 2; // align front
+  const baseRotationY = 0;
 
   // Animate in
   useEffect(() => {
@@ -38,7 +38,7 @@ export function PerfumeModel({ mouse }: PerfumeModelProps) {
     const elapsed = state.clock.getElapsedTime();
 
     // Base position animation (spin up)
-    group.current.position.y = MathUtils.lerp(-5, 0, spinProgress);
+    group.current.position.y = MathUtils.lerp(-15, -3, spinProgress);
 
     // Idle bob (gentle vertical movement)
     group.current.position.y += Math.sin(elapsed * 2) * 0.02; // slightly stronger

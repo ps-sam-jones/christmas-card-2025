@@ -5,10 +5,12 @@ import { Canvas } from '@react-three/fiber';
 import { PerfumeModel } from '@/components/PerfumeModel';
 import { Logo } from '@/components/Logo';
 import { PS } from '@/components/PS';
-import { useProgress } from '@react-three/drei';
-import { motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+import { Environment, useProgress } from '@react-three/drei';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+import { Footer } from '@/components/Footer';
+import { Ingredients } from '@/components/Ingredients';
 
 export default function Home() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
@@ -64,13 +66,15 @@ export default function Home() {
           <PS />
         </a>
       </nav>
+      <h1 className="sr-only">Slej de Procteurs</h1>
 
       {/* Parallax 3D Model - moves slower */}
       <motion.div
         className="fixed inset-0 z-30 pointer-events-none max-w-[80%] lg:max-w-none m-auto"
         style={{ y: modelY }}
       >
-        <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+        <Canvas camera={{ position: [0, 0, 5], fov: 120 }}>
+          <Environment files="/parking.hdr" />
           <ambientLight intensity={0.8} />
           <directionalLight position={[5, 5, 5]} intensity={1.2} />
           <PerfumeModel mouse={mouse} />
@@ -162,9 +166,9 @@ export default function Home() {
           className="min-h-screen w-screen bg-[radial-gradient(88.28%_88.28%_at_50.12%_75.44%,_#F1AF7B_0%,_#960218_58.58%,_#4B010C_100%)] relative"
           id="ingredients"
         >
-          <div className="flex h-full w-full items-center justify-center py-[100px]">
+          <div className="flex h-full w-full flex-col items-center justify-center py-[100px]">
             <div className="max-w-[800px] flex flex-col items-center">
-              <span className="text-[#F5B40C] font-bold uppercase">Scents de Sléj</span>
+              <span className="text-[#F5B40C] font-bold uppercase font-gotham">Scents de Sléj</span>
               <motion.h2
                 className="font-cofo text-4xl lg:text-[72px] text-white text-center leading-[120%] mt-3"
                 initial={{ opacity: 0, y: 50 }}
@@ -175,7 +179,11 @@ export default function Home() {
                 Succumb to an intoxicating blend of desires.
               </motion.h2>
             </div>
+            <Ingredients />
           </div>
+        </section>
+        <section className="relative">
+          <Footer />
         </section>
       </div>
     </div>

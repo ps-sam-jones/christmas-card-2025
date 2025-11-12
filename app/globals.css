@@ -7,6 +7,7 @@
 
 @theme {
   --font-cofo: 'cofo-raffine', sans-serif;
+  --font-gotham: var(--font-gotham), sans-serif;
   --color-gradient-start: #f1af7b;
   --color-gradient-mid: #960218;
   --color-gradient-end: #4b010c;
