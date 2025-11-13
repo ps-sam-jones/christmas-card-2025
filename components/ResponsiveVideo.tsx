@@ -111,6 +111,7 @@ export const ResponsiveVideo = ({
         muted={isMuted}
         preload="none"
         controls={false}
+        playsInline
         src={hasLoaded && src ? src : undefined}
       />
 
