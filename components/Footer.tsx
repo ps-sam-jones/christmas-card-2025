@@ -4,7 +4,7 @@ import { PS } from './PS';
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#3b2f27] relative text-[#3b2f27]">
+    <footer className="bg-[#2E0E05] relative text-[#2E0E05]">
       <div
         className="absolute top-0 left-0 w-full overflow-hidden"
         style={{ transform: 'translateY(-99%)' }}
