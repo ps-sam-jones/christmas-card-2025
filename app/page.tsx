@@ -11,6 +11,7 @@ import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import { Footer } from '@/components/Footer';
 import { Ingredients } from '@/components/Ingredients';
+import { ResponsiveVideo } from '@/components/ResponsiveVideo';
 
 export default function Home() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
@@ -122,10 +123,10 @@ export default function Home() {
                 opacity: videoOpacity,
               }}
             >
-              <LiteYouTubeEmbed
-                ref={ytRef}
-                id="7hrCv1mF7RU"
-                title="Proctors Christmas 2025 - 'Tis the Season for Temptation"
+              <ResponsiveVideo
+                portraitSrc="/portrait.mp4"
+                landscapeSrc="/landscape.mp4"
+                videoOpacity={videoScrollProgress}
               />
             </motion.div>
 

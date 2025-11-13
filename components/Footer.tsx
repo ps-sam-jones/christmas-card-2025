@@ -46,7 +46,7 @@ export const Footer = () => {
             </a>
             .
           </p>
-          <div className="flex gap-8 justify-between">
+          <div className="flex gap-4 lg:gap-8 justify-between flex-col lg:flex-row items-center">
             <a href="https://www.proctorsgroup.com">
               <PS />
             </a>

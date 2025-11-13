@@ -125,7 +125,7 @@ export const Ingredients = () => {
           .map((t) => (
             <motion.div
               key={t.id}
-              onMouseEnter={() => setHoveredType(t.type)} // set hovered type
+              onMouseEnter={() => setHoveredType(t.type)}
               className={`${t.type}_text transition-opacity duration-300 cursor-pointer`}
               animate={{
                 opacity: hoveredType && hoveredType !== t.type ? 0.3 : 1,
@@ -140,22 +140,35 @@ export const Ingredients = () => {
       {/* Center images */}
       <div
         className="md:col-span-2 xl:h-[70vh] relative flex items-center justify-center order-1 xl:order-2"
-        onMouseLeave={() => setHoveredType(null)} // handle mouse leave globally
+        onMouseLeave={() => setHoveredType(null)}
       >
-        <div className="relative w-full z-20 aspect-square">
+        <motion.div
+          className="relative w-full z-20 aspect-square"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.05,
+              },
+            },
+          }}
+        >
           {images.map((img, i) => (
             <motion.img
               key={i}
               src={img.src}
               className={`${img.className} absolute transition duration-600 ${!hoveredType || hoveredType === img.type ? 'opacity-100! scale-[1]' : 'opacity-20! scale-[0.9]'}`}
-              initial={{ opacity: 0, scale: 0, x: '50%', y: '-50%' }}
-              whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: 'easeOut', delay: i * 0.05 }}
-              onMouseEnter={() => setHoveredType(img.type)} // set hovered type
+              variants={{
+                hidden: { opacity: 0, scale: 0, x: '50%', y: '-50%' },
+                visible: { opacity: 1, scale: 1, x: 0, y: 0 },
+              }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              onMouseEnter={() => setHoveredType(img.type)}
             />
           ))}
-        </div>
+        </motion.div>
 
         <img src={'bottle.png'} alt="Slej de Procteurs Bottle" className="absolute z-30 w-[50%]" />
       </div>
@@ -167,7 +180,7 @@ export const Ingredients = () => {
           .map((t) => (
             <motion.div
               key={t.id}
-              onMouseEnter={() => setHoveredType(t.type)} // set hovered type
+              onMouseEnter={() => setHoveredType(t.type)}
               className={`${t.type}_text transition-opacity duration-300 cursor-pointer`}
               animate={{
                 opacity: hoveredType && hoveredType !== t.type ? 0.3 : 1,
@@ -181,157 +194,3 @@ export const Ingredients = () => {
     </div>
   );
 };
-
-// import { motion, useScroll, useTransform } from 'framer-motion';
-
-// export const Ingredients = () => {
-//   return (
-//     <div className="grid grid-cols-1 xl:grid-cols-4 text-white max-w-[1200px] py-16 gap-6 font-gotham w-full">
-//       <div className="flex justify-center flex-col gap-[140px]">
-//         <div className="turkey_text">
-//           <h3 className="font-cofo leading-[100%] text-[40px]">Lavish bronze essence</h3>
-//           <p>Golden, radiant and carved to perfection</p>
-//         </div>
-//         <div className="sprout_text">
-//           <h3 className="font-cofo leading-[100%]  text-[40px]">Green silk infusion</h3>
-//           <p>Bold, earthy freshness that awakens the senses</p>
-//         </div>
-//       </div>
-//       <div className="col-span-2 h-[70vh] relative flex items-center justify-center">
-//         <div className="relative size-full z-20">
-//           <motion.img
-//             src={'ingredients/gravy_2.webp'}
-//             className=" w-[50%] right-[55%] top-[13%] absolute rotate-[0deg] "
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//           <motion.img
-//             src={'ingredients/gravy_3.webp'}
-//             className=" w-[50%] right-[0%] top-[3%] absolute rotate-[0deg] "
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//           <motion.img
-//             src={'ingredients/gravy_1.webp'}
-//             className=" w-[80%] right-[28%] top-[48%] absolute rotate-[-10deg] "
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//           <motion.img
-//             src={'ingredients/turkey_1.webp'}
-//             className="rotate-[45deg] w-[50%] top-[20%] absolute"
-//             initial={{ opacity: 0, scale: 0, x: '50%', y: '50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut' }}
-//           />
-//           <motion.img
-//             src={'ingredients/turkey_1.webp'}
-//             className="rotate-[180deg] w-[40%] left-[13%] bottom-[7%] absolute"
-//             initial={{ opacity: 0, scale: 0, x: '50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
-//           />
-//           <motion.img
-//             src={'ingredients/turkey_1.webp'}
-//             className="top-[25%] w-[40%] right-[18%] absolute rotate-[-20deg]"
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-//           />
-//           <motion.img
-//             src={'ingredients/turkey_2.webp'}
-//             className=" w-[50%] right-[5%] bottom-[11%] absolute rotate-[-40deg]"
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//           <motion.img
-//             src={'ingredients/sprout_3.webp'}
-//             className=" w-[45%] left-[67%] top-[7%] absolute rotate-[90deg]"
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//           <motion.img
-//             src={'ingredients/sprout_1.webp'}
-//             className=" w-[50%] left-[2%] top-[37%] absolute rotate-[25deg]"
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//           <motion.img
-//             src={'ingredients/sprout_1.webp'}
-//             className=" w-[10%] left-[40%] bottom-[10%] absolute rotate-[290deg]"
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//           <motion.img
-//             src={'ingredients/sprout_2.webp'}
-//             className=" w-[17%] left-[43%] bottom-[2%] absolute rotate-[90deg]"
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//           <motion.img
-//             src={'ingredients/potato_1.webp'}
-//             className=" w-[15%] left-[46%] top-[8%] absolute rotate-[94deg]"
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//           <motion.img
-//             src={'ingredients/potato_1.webp'}
-//             className=" w-[20%] left-[0%] top-[60%] absolute rotate-[-20deg]"
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//           <motion.img
-//             src={'ingredients/potato_2.webp'}
-//             className=" w-[32%] right-[2%] top-[39%] absolute rotate-[-20deg]"
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//           <motion.img
-//             src={'ingredients/potato_3.webp'}
-//             className=" w-[34%] left-[24%] top-[11%] absolute rotate-[40deg] "
-//             initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-//           />
-//         </div>
-//         <img src={'bottle.png'} alt="Slej de Procteurs Bottle" className="absolute z-30 w-[60%]" />
-//       </div>
-//       <div className="flex justify-center flex-col gap-[140px]">
-//         <div id="potato_text">
-//           <h3 className="font-cofo leading-[100%]  text-[40px]">Honeyed starch symphony</h3>
-//           <p>Luxuriously layered with hints of oil and satisfaction</p>
-//         </div>
-//         <div className="gravy_text">
-//           <h3 className="font-cofo leading-[100%] text-[40px]">Velvet jus absolute</h3>
-//           <p>Rich, dark and utterly consuming</p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
