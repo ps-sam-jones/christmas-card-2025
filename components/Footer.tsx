@@ -10,7 +10,7 @@ export const Footer = () => {
         style={{ transform: 'translateY(-99%)' }}
       >
         <motion.svg
-          className="w-full"
+          className="w-full hidden xl:block"
           viewBox="0 0 1440 100"
           preserveAspectRatio="none"
           style={{ width: '200%' }}

@@ -44,7 +44,7 @@ export function PerfumeModel({ mouse }: PerfumeModelProps) {
     group.current.position.y += Math.sin(elapsed * 2) * 0.02; // slightly stronger
 
     // Idle sway (rotation around X and Z axes for ambient movement)
-    group.current.rotation.x = mouse.y * 0.3 + Math.sin(elapsed * 0.5) * 0.05;
+    group.current.rotation.x = mouse.y * -1 * 0.2 + Math.sin(elapsed * 0.5) * 0.05;
     group.current.rotation.z = Math.sin(elapsed * 0.3) * 0.03;
 
     // Y rotation: initial spin + cursor

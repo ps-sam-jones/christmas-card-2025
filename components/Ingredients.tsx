@@ -119,23 +119,35 @@ export const Ingredients = () => {
   return (
     <div className="grid grid-cols-1 xl:grid-cols-4 text-white px-16 xl:px-0 max-w-[1200px] py-8 xl:py-16 gap-6 font-gotham w-full">
       {/* Left column */}
-      <div className="flex flex-col gap-8 xl:gap-[140px] order-2 xl:order-1">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
+        viewport={{ once: true }}
+        className="flex flex-col gap-8 xl:gap-[140px] order-2 xl:order-1 justify-center"
+      >
         {textBlocks
           .filter((t) => ['turkey', 'sprout'].includes(t.type))
           .map((t) => (
             <motion.div
               key={t.id}
               onMouseEnter={() => setHoveredType(t.type)}
-              className={`${t.type}_text transition-opacity duration-300 cursor-pointer`}
+              className={`${t.type}_text transition-opacity duration-300 cursor-pointer relative`}
               animate={{
                 opacity: hoveredType && hoveredType !== t.type ? 0.3 : 1,
               }}
             >
+              <motion.span
+                animate={{
+                  backgroundColor: hoveredType === t.type ? 'white' : 'transparent',
+                }}
+                className={'absolute size-2 rounded-full border border-white -left-5 top-2'}
+              ></motion.span>
               <h3 className="font-cofo leading-[100%] text-3xl xl:text-[40px]">{t.title}</h3>
               <p className="text-sm xl:text-base">{t.desc}</p>
             </motion.div>
           ))}
-      </div>
+      </motion.div>
 
       {/* Center images */}
       <div
@@ -174,23 +186,35 @@ export const Ingredients = () => {
       </div>
 
       {/* Right column */}
-      <div className="flex flex-col gap-8 xl:gap-[140px] order-3">
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
+        viewport={{ once: true }}
+        className="flex flex-col gap-8 xl:gap-[140px] order-3 justify-center"
+      >
         {textBlocks
           .filter((t) => ['potato', 'gravy'].includes(t.type))
           .map((t) => (
             <motion.div
               key={t.id}
               onMouseEnter={() => setHoveredType(t.type)}
-              className={`${t.type}_text transition-opacity duration-300 cursor-pointer`}
+              className={`${t.type}_text transition-opacity duration-300 cursor-pointer relative`}
               animate={{
                 opacity: hoveredType && hoveredType !== t.type ? 0.3 : 1,
               }}
             >
+              <motion.span
+                animate={{
+                  backgroundColor: hoveredType === t.type ? 'white' : 'transparent',
+                }}
+                className={'absolute size-2 rounded-full border border-white -left-5 top-2'}
+              ></motion.span>
               <h3 className="font-cofo leading-[100%] text-3xl xl:text-[40px]">{t.title}</h3>
               <p className="text-sm xl:text-base">{t.desc}</p>
             </motion.div>
           ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

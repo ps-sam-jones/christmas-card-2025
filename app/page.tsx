@@ -12,6 +12,7 @@ import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import { Footer } from '@/components/Footer';
 import { Ingredients } from '@/components/Ingredients';
 import { ResponsiveVideo } from '@/components/ResponsiveVideo';
+import { ScrollIndicator } from '@/components/ScrollIndicator';
 
 export default function Home() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
@@ -89,6 +90,12 @@ export default function Home() {
       >
         <Logo />
       </motion.div>
+      <motion.div
+        className="fixed pointer-events-none z-20 right-6 xl:right-12 bottom-[100px]"
+        style={{ opacity: logoOpacity }}
+      >
+        <ScrollIndicator />
+      </motion.div>
 
       {/* Scrollable content */}
       <div className="relative z-30">
@@ -138,7 +145,7 @@ export default function Home() {
               }}
             >
               <h2 className="font-cofo text-6xl lg:text-[72px] text-white text-center">
-                {['Tis', 'the', 'season', 'for', 'temptation.'].map((word, index) => {
+                {["'Tis", 'the', 'season', 'for', 'temptation.'].map((word, index) => {
                   const totalWords = 5;
                   const offset = 0.1;
                   const range = 0.3;
@@ -167,7 +174,7 @@ export default function Home() {
           className="min-h-screen w-screen bg-[radial-gradient(88.28%_88.28%_at_50.12%_75.44%,_#F1AF7B_0%,_#960218_58.58%,_#4B010C_100%)] relative"
           id="ingredients"
         >
-          <div className="flex h-full w-full flex-col items-center justify-center py-[100px]">
+          <div className="flex h-full w-full flex-col items-center justify-center pt-[100px] pb-[100px] xl:pb-[175px]">
             <div className="max-w-[800px] flex flex-col items-center">
               <span className="text-[#F5B40C] font-bold uppercase font-gotham">Scents de Sléj</span>
               <motion.h2
