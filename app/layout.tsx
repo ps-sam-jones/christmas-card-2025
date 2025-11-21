@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 
 export const metadata: Metadata = {
   title: 'Slej de Procteurs | Proctor + Stevenson',
+  themeColor: '#42010B',
   description: `Discover the mysterious scent of good tidings and festive magic. Slej de Procteurs is not just an eau de parfum, it's a veritable buffet of delectable feelings`,
 };
 
