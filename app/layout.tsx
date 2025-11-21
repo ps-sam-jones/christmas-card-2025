@@ -49,7 +49,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/dbc8cnl.css" />
       </head>
-      <body className={`antialiased ${gotham.variable}`}>{children}</body>
+      <body className={`antialiased ${gotham.variable} bg-[#42010B]`}>{children}</body>
     </html>
   );
 }
