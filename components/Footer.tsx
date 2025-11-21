@@ -38,7 +38,7 @@ export const Footer = () => {
 
       <div className="pt-4 pb-8 px-6 text-white">
         <div className="pt-2 pb-8 px-6">
-          <p className="text-white font-gotham max-w-[700px] text-md mb-12">
+          <p className="text-white font-gotham max-w-[625px] text-md mb-12">
             Despite it’s irresistible allure, Sléj is sadly a purely fictitious festive fragrance,
             brought to you by the creative minds at{' '}
             <a href="https://www.proctorsgroup.com" className="underline hover:text-amber-400">
