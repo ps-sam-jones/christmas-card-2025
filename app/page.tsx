@@ -91,7 +91,7 @@ export default function Home() {
         <Logo />
       </motion.div>
       <motion.div
-        className="fixed pointer-events-none z-20 right-6 xl:right-12 bottom-[100px]"
+        className="fixed pointer-events-none z-20 right-6 xl:right-12 bottom-[56px] lg:bottom-[100px]"
         style={{ opacity: logoOpacity }}
       >
         <ScrollIndicator />
@@ -107,7 +107,7 @@ export default function Home() {
 
         {/* Video Section */}
         <section ref={videoRef} className="h-[250vh] w-screen bg-[#42010B] relative" id="video">
-          <div className="absolute top-[-60px] h-[60px] left-0 right-0  z-50">
+          <div className="absolute top-[-60px] h-[60px] left-0 right-0 z-50">
             <motion.div
               className=" bg-[#42010B] h-[16px] absolute bottom-0 z-10"
               initial={{ width: '0%' }}
