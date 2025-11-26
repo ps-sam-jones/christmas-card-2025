@@ -84,7 +84,7 @@ export default function Home() {
 
       {/* Fixed Logo - fades out */}
       <motion.div
-        className="fixed inset-0 flex items-center justify-center pointer-events-none z-20 w-[200px] lg:w-auto m-auto"
+        className="fixed inset-0 flex items-center justify-center pointer-events-none z-20 w-[200px] lg:w-[385px] 2xl:w-[500px] m-auto"
         style={{ opacity: logoOpacity, scale: logoScale }}
       >
         <Logo />
