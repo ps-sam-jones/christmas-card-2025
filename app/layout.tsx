@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import localFont from 'next/font/local';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Slej de Procteurs | Proctor + Stevenson',
@@ -48,6 +49,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/dbc8cnl.css" />
+        <Script
+          strategy="beforeInteractive"
+          src={`https://cdn-cookieyes.com/client_data/95079140c7648ed9ac2775844b99666a/script.js`}
+        ></Script>
       </head>
       <body className={`antialiased ${gotham.variable} bg-[#42010B]`}>{children}</body>
     </html>

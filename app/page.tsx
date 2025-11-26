@@ -75,10 +75,9 @@ export default function Home() {
         className="fixed inset-0 z-30 pointer-events-none max-w-[80%] lg:max-w-none m-auto"
         style={{ y: modelY }}
       >
-        <Canvas camera={{ position: [0, 0, 5], fov: 120 }}>
+        <Canvas camera={{ position: [0, 0, 25], fov: 28 }}>
           <Environment files="/parking.hdr" />
-          <ambientLight intensity={0.8} />
-          <directionalLight position={[5, 5, 5]} intensity={1.2} />
+          <ambientLight intensity={0.2} />
           <PerfumeModel mouse={mouse} />
         </Canvas>
       </motion.div>
