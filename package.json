@@ -16,6 +16,7 @@
     "framer-motion": "^12.23.24",
     "framer-motion-3d": "^12.4.13",
     "next": "^14.2.15",
+    "posthog-js": "^1.298.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-lite-youtube-embed": "^2.5.6",

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import localFont from 'next/font/local';
 import Script from 'next/script';
+import { PostHogProvider } from './providers/PosthogProvider';
 
 export const metadata: Metadata = {
   title: 'Slej de Procteurs | Proctor + Stevenson',
@@ -57,7 +58,9 @@ export default function RootLayout({
           src={`https://cdn-cookieyes.com/client_data/95079140c7648ed9ac2775844b99666a/script.js`}
         ></Script>
       </head>
-      <body className={`antialiased ${gotham.variable} bg-[#42010B]`}>{children}</body>
+      <body className={`antialiased ${gotham.variable} bg-[#42010B]`}>
+        <PostHogProvider>{children}</PostHogProvider>
+      </body>
     </html>
   );
 }
