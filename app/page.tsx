@@ -24,8 +24,6 @@ export default function Home() {
   const [progress, setProgress] = useState(0);
   const { progress: modelProgress } = useProgress();
 
-  const ytRef = useRef(null);
-
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
