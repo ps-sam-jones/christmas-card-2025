@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { MotionValue, useMotionValueEvent, motion, useSpring } from 'framer-motion';
-import { is } from '@react-three/fiber/dist/declarations/src/core/utils';
+import { MotionValue, useMotionValueEvent } from 'framer-motion';
 
 type ResponsiveVideoProps = {
   portraitSrc: string;
