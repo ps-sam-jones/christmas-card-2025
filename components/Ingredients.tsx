@@ -184,7 +184,12 @@ export const Ingredients = () => {
           ))}
         </motion.div>
 
-        <img src={'bottle.png'} alt="Slej de Procteurs Bottle" className="absolute z-30 w-[50%]" />
+        <img
+          src={'bottle.webp'}
+          alt="Slej de Procteurs Bottle"
+          loading="lazy"
+          className="absolute z-30 w-[50%]"
+        />
       </div>
 
       {/* Right column */}
