@@ -1,21 +1,25 @@
 'use client';
-
+import dynamic from 'next/dynamic';
 import { useState, useEffect, useRef } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { PerfumeModel } from '@/components/PerfumeModel';
+
 import { Logo } from '@/components/Logo';
 import { PS } from '@/components/PS';
-import { Environment, useProgress } from '@react-three/drei';
+import { useProgress } from '@react-three/drei';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import LiteYouTubeEmbed from 'react-lite-youtube-embed';
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import { Footer } from '@/components/Footer';
 import { Ingredients } from '@/components/Ingredients';
 import { ResponsiveVideo } from '@/components/ResponsiveVideo';
 import { ScrollIndicator } from '@/components/ScrollIndicator';
 
+const BottleScene = dynamic(
+  () => import('../components/PerfumeCanvas').then((mod) => mod.PerfumeCanvas),
+  {
+    ssr: false,
+    loading: () => <></>,
+  }
+);
+
 export default function Home() {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
   const { progress: modelProgress } = useProgress();
@@ -47,16 +51,6 @@ export default function Home() {
     setProgress(modelProgress);
   }, [modelProgress]);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = -(e.clientY / window.innerHeight) * 2 + 1;
-      setMouse({ x, y });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
     <div ref={containerRef} className="relative">
       {/* Fixed background layers */}
@@ -64,7 +58,7 @@ export default function Home() {
 
       {/* Fixed navigation */}
       <nav className="h-20 w-full fixed top-0 left-0 flex justify-center p-8 z-50">
-        <a href="https://www.proctorsgroup.com">
+        <a href="https://www.proctorsgroup.com" title="Proctor + Stevenson">
           <PS />
         </a>
       </nav>
@@ -75,11 +69,7 @@ export default function Home() {
         className="fixed inset-0 z-30 pointer-events-none max-w-[80%] lg:max-w-none m-auto"
         style={{ y: modelY }}
       >
-        <Canvas camera={{ position: [0, 0, 25], fov: 28 }}>
-          <Environment files="/parking.hdr" />
-          <ambientLight intensity={0.2} />
-          <PerfumeModel mouse={mouse} />
-        </Canvas>
+        <BottleScene />
       </motion.div>
 
       {/* Fixed Logo - fades out */}

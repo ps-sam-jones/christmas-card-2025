@@ -170,6 +170,7 @@ export const Ingredients = () => {
           {images.map((img, i) => (
             <motion.img
               key={i}
+              alt="ingredient image"
               src={img.src}
               className={`${img.className} absolute transition duration-600 ${!hoveredType || hoveredType === img.type ? 'opacity-100! scale-[1]' : 'opacity-20! scale-[0.9]'}`}
               variants={{
