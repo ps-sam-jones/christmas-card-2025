@@ -52,7 +52,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="https://use.typekit.net/dbc8cnl.css" />
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://use.typekit.net/dbc8cnl.css"
+          // @ts-ignore
+          fetchpriority="high"
+        />
         <Script
           strategy="beforeInteractive"
           src={`https://cdn-cookieyes.com/client_data/95079140c7648ed9ac2775844b99666a/script.js`}
