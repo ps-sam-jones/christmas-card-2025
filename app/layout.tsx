@@ -57,7 +57,7 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://use.typekit.net/dbc8cnl.css"
           // @ts-ignore
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <Script
           strategy="beforeInteractive"
